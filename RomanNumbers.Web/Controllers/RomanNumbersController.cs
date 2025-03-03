@@ -33,7 +33,7 @@ namespace RomanNumbers.API.Controllers
         [HttpGet("/convert-from-decimal-to-roman")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string>> ConvertFromDecimalToRoman([FromRoute] decimal number)
+        public async Task<ActionResult<string>> ConvertFromDecimalToRoman([FromQuery] decimal number)
         {
             var response = await _mediator.Send(new GetFromDecimalToRomanQuery() { DecimalInput = number });
             return Ok(response);
