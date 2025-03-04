@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RomanNumbers.Web.Middlewares
+namespace RomanNumbers.Web.Exceptions
 {
     internal sealed class GlobalExceptionHandler : IExceptionHandler
     {

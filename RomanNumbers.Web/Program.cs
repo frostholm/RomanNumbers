@@ -2,7 +2,7 @@ using FluentValidation;
 using RomanNumbers.Application.Behaviors.ValidationBehavior;
 using RomanNumbers.Application.Infrastructure;
 using RomanNumbers.Application.Services;
-using RomanNumbers.Web.Middlewares;
+using RomanNumbers.Web.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
