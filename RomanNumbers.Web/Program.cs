@@ -2,11 +2,15 @@ using FluentValidation;
 using RomanNumbers.Application.Behaviors.ValidationBehavior;
 using RomanNumbers.Application.Infrastructure;
 using RomanNumbers.Application.Services;
-using System.Reflection;
+using RomanNumbers.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();
 
@@ -14,7 +18,8 @@ builder.Services.AddSingleton<IRomanNumeralConverterService, RomanNumeralConvert
 builder.Services.AddValidatorsFromAssembly(typeof(DoNotDelete).Assembly);
 
 
-builder.Services.AddMediatR(cfg => {
+builder.Services.AddMediatR(cfg =>
+{
     cfg.RegisterServicesFromAssembly(typeof(DoNotDelete).Assembly);
     cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
@@ -24,11 +29,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseExceptionHandler();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

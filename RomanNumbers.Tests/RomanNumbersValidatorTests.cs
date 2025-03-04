@@ -1,6 +1,4 @@
-﻿using RomanNumbers.Validators;
-
-namespace RomanNumbers.Tests
+﻿namespace RomanNumbers.Tests
 {
     [TestClass]
     public class RomanNumeralValidatorTests
