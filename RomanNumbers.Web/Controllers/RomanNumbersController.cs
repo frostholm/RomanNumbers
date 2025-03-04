@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromDecimalToRoman;
+using RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromIntToRoman;
 using RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromRomanToInt;
 
 namespace RomanNumbers.API.Controllers
@@ -34,7 +34,7 @@ namespace RomanNumbers.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<string>> ConvertFromIntegerToRoman([FromQuery] int number)
         {
-            var response = await _mediator.Send(new GetFromDecimalToRomanQuery() { DecimalInput = number });
+            var response = await _mediator.Send(new GetFromIntToRomanQuery() { Input = number });
             return Ok(response);
         }
 

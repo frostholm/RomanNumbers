@@ -8,11 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="MSTest" Version="3.8.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RomanNumbers.Application\RomanNumbers.Application.csproj" />
+    <ProjectReference Include="..\RomanNumbers.Web\RomanNumbers.Web.csproj" />
     <ProjectReference Include="..\RomanNumbers\RomanNumbers.Application.csproj" />
   </ItemGroup>
 
