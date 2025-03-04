@@ -9,6 +9,6 @@ namespace RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromDecimal
 {
     public class GetFromDecimalToRomanQuery : IRequest<string> 
     {
-        public decimal DecimalInput { get; set; }
+        public int DecimalInput { get; set; }
     }
 }

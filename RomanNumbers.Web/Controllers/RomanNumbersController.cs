@@ -1,8 +1,7 @@
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromDecimalToRoman;
-using System.Net.NetworkInformation;
+using RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromRomanToInt;
 
 namespace RomanNumbers.API.Controllers
 {
@@ -21,19 +20,19 @@ namespace RomanNumbers.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("/convert-from-roman-to-decimal")]
+        [HttpGet("/convert-from-roman-to-integer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<decimal>> ConvertFromRomanToDecimal([FromQuery] string romanNumber)
+        public async Task<ActionResult<int>> ConvertFromRomanToInteger([FromQuery] string romanNumber)
         {
-            var response = await _mediator.Send(new GetFromRomanToDecimalQuery() { RomanInput = romanNumber });
+            var response = await _mediator.Send(new GetFromRomanToIntQuery() { RomanInput = romanNumber });
             return Ok(response);
         }
 
-        [HttpGet("/convert-from-decimal-to-roman")]
+        [HttpGet("/convert-from-integer-to-roman")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string>> ConvertFromDecimalToRoman([FromQuery] decimal number)
+        public async Task<ActionResult<string>> ConvertFromIntegerToRoman([FromQuery] int number)
         {
             var response = await _mediator.Send(new GetFromDecimalToRomanQuery() { DecimalInput = number });
             return Ok(response);

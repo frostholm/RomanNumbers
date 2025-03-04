@@ -1,6 +1,7 @@
 using FluentValidation;
 using RomanNumbers.Application.Behaviors.ValidationBehavior;
 using RomanNumbers.Application.Infrastructure;
+using RomanNumbers.Application.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddSingleton<IRomanNumeralConverterService, RomanNumeralConverterService>();
 builder.Services.AddValidatorsFromAssembly(typeof(DoNotDelete).Assembly);
 
 

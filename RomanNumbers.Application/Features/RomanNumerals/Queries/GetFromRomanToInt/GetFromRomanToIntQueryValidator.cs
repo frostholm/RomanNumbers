@@ -7,11 +7,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromRomanToDecimal
+namespace RomanNumbers.Application.Features.RomanNumerals.Queries.GetFromRomanToInt
 {
-    public class GetFromDecimalToRomanQueryValidator : AbstractValidator<GetFromRomanToDecimalQuery>
+    public class GetFromRomanToIntQueryValidator : AbstractValidator<GetFromRomanToIntQuery>
     {
-        public GetFromDecimalToRomanQueryValidator()
+        public GetFromRomanToIntQueryValidator()
         {
             RuleFor(p => p.RomanInput)
                 .NotEmpty().WithMessage("Input cannot be empty or whitespace.")
